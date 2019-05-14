@@ -37,8 +37,8 @@ class Movies extends Component {
                 <h1>{this.state.movie.title}</h1><br/>
                 <span class="date">{this.state.movie.release_date}</span><br/>
                 <img class="show" src={`https://image.tmdb.org/t/p/original/${this.state.movie.backdrop_path}`}/><br/>
-                <span class="overview">{this.state.movie.overview}</span>
-                
+                <span class="overview">{this.state.movie.overview}</span><br/>
+                <button type="submit" class="ui secondary button" value="Submit">Add Movie</button>
             </div>
         )
     }
