@@ -31,10 +31,9 @@ class Movies extends Component {
       }
 
     render(){
-       
-        console.log(this.state)
         return(
-            <div class="image">
+            <div>
+                
                 <h1>{this.state.movie.title}</h1><br/>
                 <span class="date">{this.state.movie.release_date}</span><br/>
                 <img class="show" src={`https://image.tmdb.org/t/p/original/${this.state.movie.backdrop_path}`}/><br/>

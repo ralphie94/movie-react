@@ -2,12 +2,12 @@ import React from 'react'
 
 import MainContainer from "../MainContainer/MainContainer";
 
-const Movies = ({movies}) =>
+
+const Movies = ({movies, username, currentUser}) =>
     <div>
-        <h1 id="main">Movie App</h1>               
+        <h1 id="main">Film Site</h1>               
         <MainContainer 
-        movies={movies} 
-        // username={username} 
+            movies={movies}  
         />   
     </div>
 

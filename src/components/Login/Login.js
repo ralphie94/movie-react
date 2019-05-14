@@ -1,15 +1,29 @@
 import React, { Component } from "react"
 
+import { Redirect } from "react-router-dom";
+
 class Login extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        logged: false
     }
 
-    handleSubmit = (e) =>{
+    handleSubmit = async (e) =>{
         e.preventDefault()
-        this.props.login(this.state.username);
+        const loginResponse = await fetch ("/users/login", {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify(this.state),
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await loginResponse.json();
+        if(parsedResponse.success) {
+            this.props.doSetCurrentUser(parsedResponse.user)
+        }
     }
 
     handleChange = (e) => {
@@ -18,8 +32,11 @@ class Login extends Component {
 
     render(){
         const { username, password } = this.state
+        console.log(this.props)
         return(
-            <form onSubmit={this.handleSubmit} class="ui form">
+            this.props.currentUser
+            ? <Redirect to={`/`} />
+            : <form onSubmit={this.handleSubmit} class="ui form">
             <h1 id="login">Login</h1>
                 <input type="text" name="username" id="loginforms" placeholder="Username" value={username} onChange={this.handleChange} /><br/>
                 <input type="text" name="password" id="loginforms" placeholder="Password" value={password} onChange={this.handleChange} /><br/>

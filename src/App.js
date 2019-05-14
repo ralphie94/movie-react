@@ -4,21 +4,28 @@ import { Switch, Route } from "react-router-dom";
 import * as routes from "./constants/routes";
 import NavBar from './components/NavBar/NavBar';
 import Movies from './components/Movies/Movies'
-// import Login from "./components/Login/Login"
+import Login from "./components/Login/Login"
+import Register from "./components/Register/Register";
 
 import MoviesShow from './components/MoviesShow/MoviesShow'
 
 import './App.css';
 
-const API_KEY='82f5b0c8452c5b698c5b7c68d5563ddd'
+const API_KEY = process.env.REACT_APP_KEY
+
+console.log(API_KEY)
 
 class App extends Component {
 
   state = {
-    logged: false,
-    username: "",
-    movies: []
+    currentUser: null,
+    movies:[]
   }
+
+  doSetCurrentUser = user =>
+    this.setState({
+      currentUser: user
+    })
 
   componentDidMount() {
     this.getMovies().then(data => {
@@ -27,12 +34,6 @@ class App extends Component {
     })
   }
 
-  login = username =>
-    this.setState({
-      logged: true,
-      username
-    })
-
     getMovies = async () => {
       try {
         const movies = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`);
@@ -40,7 +41,7 @@ class App extends Component {
             throw Error(movies.response.statusText);
           }
           const moviesJson = await movies.json();
-           return moviesJson
+          return moviesJson
           
       } catch(err) {
         console.log(err, "err in the catch block");
@@ -49,17 +50,18 @@ class App extends Component {
     }
   
   render(){
-    const { username, movie, movies} = this.state
+    const {movies} = this.state
     return (
       <div>
-        <NavBar />
+        <NavBar currentUser={this.state.currentUser}/>
         
         <Switch>
-    <Route exact path={routes.ROOT} render={() => <Movies movies={movies}/> } />
-          <Route exact path={routes.HOME} />
+          <Route exact path={routes.HOME} render={() => <Movies movies={movies} doSetCurrentUser={this.doSetCurrentUser}/> } />
           <Route exact path={routes.USERS} />
           <Route exact path={routes.POSTS} />
           <Route exact path={'/movies/:id'} render={() => <MoviesShow />}/>
+          <Route exact path={"/login"} render={(props) => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
+          <Route exact path={"/register"} render={() => <Register />}/>
           <Route render={() => <div>NOT FOUND</div>}/>
         </Switch>     
       </div>

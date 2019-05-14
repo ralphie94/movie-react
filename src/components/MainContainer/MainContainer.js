@@ -2,21 +2,30 @@ import React, {Component} from "react"
 
 import { Link } from "react-router-dom"
 
-import MoviesShow from "../MoviesShow/MoviesShow"
+import "./MainContainer.css"
 
 class MainContainer extends Component {
     render(){
         return(
             <div>
-                <h1 id="greeting">Hello {this.props.username}!</h1><br/>
-                {
-                    this.props.movies.map(movie => 
-                        <div class="row">
-                         <div class="column">                           
-                            <Link to={`/movies/${movie.id}`}><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} /></Link>
-                            </div>
-                          </div>                           
-                    )
+                {this.props.movies
+                ? (
+                    <div>
+                    {
+                        this.props.movies.map(movie => 
+                            <div class="row">
+                             <div class="column">                           
+                                <Link to={`/movies/${movie.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+                                </Link>
+                                </div>
+                              </div>                           
+                        )
+                    }
+                    </div>
+                )
+                :(
+                    <h1></h1>
+                )
                 }
             </div>            
         )           
