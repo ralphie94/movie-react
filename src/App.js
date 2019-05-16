@@ -82,7 +82,7 @@ class App extends Component {
           <Route exact path={routes.HOME} render={() => <Movies movies={movies}/> } />
           <Route exact path={routes.USERS} />
           <Route exact path={`${routes.PROFILE}/:id`} render={() => <Profile />}/>
-          <Route exact path={'/movies/:id'} render={() => <MoviesShow />}/>
+          <Route exact path={'/movies/:id'} render={() => <MoviesShow currentUser={this.state.currentUser}/>}/>
           <Route exact path={"/login"} render={(props) => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path={routes.REGISTER} render={() => <CreateUser currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route render={() => <div>NOT FOUND</div>}/>

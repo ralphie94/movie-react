@@ -62,11 +62,12 @@ class CreateUser extends Component {
     }
 }
 const RegisterForm = ({changeHandler, handleSubmit, username, password, email}) =>
-<form onSubmit={e => handleSubmit(e)}>
-    <input onChange={changeHandler} type="text" name="username" placeholder="Username" value={username}></input><br/>
-    <input onChange={changeHandler} type="password" name="password" placeholder="Password" value={password}></input><br/>
-    <input onChange={changeHandler} type="text" name="email" placeholder="Email" value={email}></input><br/>
-    <button type="submit">Submit</button>
+<form onSubmit={e => handleSubmit(e)} class="ui form">
+    <h1 id="login">Register</h1>
+    <input onChange={changeHandler} type="text" id="loginforms" name="username" placeholder="Username" value={username}></input><br/>
+    <input onChange={changeHandler} type="password" id="loginforms" name="password" placeholder="Password" value={password}></input><br/>
+    <input onChange={changeHandler} type="text" id="loginforms" name="email" placeholder="Email" value={email}></input><br/>
+    <button type="submit" class="ui secondary button" value="Submit">Submit</button>
    
 </form>
 

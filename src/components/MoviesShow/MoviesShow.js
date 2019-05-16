@@ -55,7 +55,7 @@ class Movies extends Component {
             })
             const parsedResponse = await response.json()
             if(parsedResponse.success){
-                this.props.history.push('/profile')
+                this.props.history.push(`/profile/${this.props.currentUser._id}`)
             }
 
         }catch(err){
@@ -65,16 +65,17 @@ class Movies extends Component {
 
     render(){
         return(
+            
             <div>
                 <Container>
-                <h1>{this.state.movie.title}</h1><br/>
+                <h1 class="show">{this.state.movie.title}</h1><br/>
                 <span class="date">{this.state.movie.release_date}</span><br/>
                 <img class="show" src={`https://image.tmdb.org/t/p/original/${this.state.movie.backdrop_path}`}/><br/>
                 <h2>Plot</h2><br/>
                 <span class="overview">{this.state.movie.overview}</span><br/>
                 <button class="ui secondary button" value="Submit" onClick={()=>{this.addMovie(this.state.movie)}}>Add Movie</button><br/>
                 <Videos video={this.props.match.params.id}/>
-                
+
                 </Container>
             </div>
         )

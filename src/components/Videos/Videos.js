@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal } from "semantic-ui-react"
-import "./Videos.css"
+
+
 const API_KEY='82f5b0c8452c5b698c5b7c68d5563ddd'
 
 
@@ -35,9 +36,9 @@ class Videos extends Component {
     render(){
         return (
             <div>
-                <Modal trigger={<Button>Play Trailer</Button>} basic size="small">
-                <iframe width="1000" height="600" frameborder="0" allowFullScreen
-                    src={`https://www.youtube.com/embed/${this.state.video.key}?autoplay=1`}>
+                <Modal trigger={<Button>Play Trailer</Button>} basic size="large">
+                <iframe id="background-video" width="1000" height="700" frameborder="0" allowFullScreen
+                    src={`https://www.youtube.com/embed/${this.state.video.key}?autoplay=1&mute=1`}>
                 </iframe>
                 </Modal>
             </div>

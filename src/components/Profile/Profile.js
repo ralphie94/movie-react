@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 
 class Profile extends Component {
     state = {
-        movies: []
+        movies: [],
+        _id: null
     }
 
     componentDidMount() {
@@ -22,6 +23,20 @@ class Profile extends Component {
             console.log(err)
         }
     }
+
+    deleteMovie = async (id,e) => {
+        e.preventDefault();
+        try {
+            const deleteMovie = await fetch (`/users/${this.props.match.params.id}`, {
+                method: "DELETE",
+                credentials: "include"
+            });
+            const deleteMovieJson = await deleteMovie.json();
+            this.setState({movies: this.state.movies.filter((movie,i) => movie._id !== id)})
+        } catch(err){
+            console.log(err);
+        }
+    }
     
     render(){
         console.log(this.state)
@@ -31,8 +46,11 @@ class Profile extends Component {
             {
                 this.state.movies.map((m,i) =>
                 <div>
+                    <li>
                     <h1>{m.title}</h1>
-                    <Link to={`/movies/${m.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${m.image}`} /></Link>
+                    <Link to={`/movies/${m.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${m.image}`} /></Link><br/>
+                    <button class="ui secondary button">Delete Movie</button>
+                    </li>
                 </div>
                 )
             }
