@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
-import { Input } from "semantic-ui-react";
+import { Menu, Input } from "semantic-ui-react";
 
 import { Link } from "react-router-dom"
+
+import "./NavBar.css";
 
 import * as routes from "../../constants/routes"
 
@@ -26,21 +28,22 @@ class NavBar extends Component {
 
         return(
          <div>
-            <Link  to={routes.HOME} >Home</Link>
+             <Menu secondary>
+            <Link to={routes.HOME} className="active">Home</Link>
             {
-                this.props.currentUser && <Link to={routes.USERS} >Edit Info</Link>
+                this.props.currentUser && <Link to={routes.USERS} className="active">Edit Info</Link>
             }
             {
-                this.props.currentUser && <Link to={`${routes.PROFILE}/${this.props.currentUser._id}`} >Profile</Link>
-            }
+                this.props.currentUser && <Link to={`${routes.PROFILE}/${this.props.currentUser._id}`} className="active">Profile</Link>
+            }             
+            <Link position="right" to={routes.LOGIN} className="active">Login</Link>
+            <Link to={routes.REGISTER} className="active">Register</Link>
             <Link>
-                <form onSubmit={this.handleSubmit} autoComplete="off">
+                <form onSubmit={this.handleSubmit} autoComplete="off" className="search">
                     <Input icon="search" placeholder="Search..." name='searchInput' value={this.state.searchInput} onChange={this.handleInput}/>
                 </form>
             </Link>
-             
-            <Link position="right" to={routes.LOGIN}>Login</Link>
-            <Link to={routes.REGISTER} >Register</Link>
+            </Menu>
           </div>  
           
         )
