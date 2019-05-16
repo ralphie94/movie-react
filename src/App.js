@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import Movies from './components/Movies/Movies'
 import Login from "./components/Login/Login"
 import Profile from "./components/Profile/Profile";
+import CreateUser from "./components/CreateUser/CreateUser"
 
 import MoviesShow from './components/MoviesShow/MoviesShow'
 
@@ -35,12 +36,17 @@ class App extends Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   this.getMovies().then(data => {
-  //     console.log(data)
-  //     this.setState({movies: data.results})
-  //   })
-  // }
+  searchUpdate = async (val) => {
+    try{
+      await this.setState({searchResult: val})
+      const res = await this.getMovies();
+      return this.setState({movies: res.results})
+    }catch(err){
+      return err
+    }
+  }
+
+  
 
   handleSearch = (str) => {
     if(!str){
@@ -50,9 +56,6 @@ class App extends Component {
     }
   }
 
-  searchUpdate = (val) => {
-    this.setState({ searchResult: val})
-  }
 
     getMovies = async () => {
       try {
@@ -76,11 +79,12 @@ class App extends Component {
         <NavBar currentUser={this.state.currentUser} update={this.searchUpdate}/>
         
         <Switch>
-          <Route exact path={routes.HOME} render={() => <Movies movies={movies} doSetCurrentUser={this.doSetCurrentUser}/> } />
+          <Route exact path={routes.HOME} render={() => <Movies movies={movies}/> } />
           <Route exact path={routes.USERS} />
-          <Route exact path={routes.PROFILE} render={() => <Profile />}/>
+          <Route exact path={`${routes.PROFILE}/:id`} render={() => <Profile />}/>
           <Route exact path={'/movies/:id'} render={() => <MoviesShow />}/>
           <Route exact path={"/login"} render={(props) => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
+          <Route exact path={routes.REGISTER} render={() => <CreateUser currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route render={() => <div>NOT FOUND</div>}/>
         </Switch>     
       </div>

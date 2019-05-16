@@ -7,7 +7,8 @@ class Login extends Component {
     state = {
         username: "",
         password: "",
-        logged: false
+        logged: false,
+        message: "",
     }
 
     handleSubmit = async (e) =>{
@@ -23,6 +24,14 @@ class Login extends Component {
         const parsedResponse = await loginResponse.json();
         if(parsedResponse.success) {
             this.props.doSetCurrentUser(parsedResponse.user)
+            this.setState({
+                logged: true
+            })
+        } else {
+            console.log("HIT ELSE")
+            this.setState({
+                message: "Try again!"
+            })
         }
     }
 
@@ -31,16 +40,18 @@ class Login extends Component {
     }
 
     render(){
-        const { username, password } = this.state
+        const { username, password, message } = this.state
         console.log(this.props)
         return(
             this.props.currentUser
             ? <Redirect to={`/`} />
             : <form onSubmit={this.handleSubmit} class="ui form">
             <h1 id="login">Login</h1>
+                {message}
                 <input type="text" name="username" id="loginforms" placeholder="Username" value={username} onChange={this.handleChange} /><br/>
                 <input type="password" name="password" id="loginforms" placeholder="Password" value={password} onChange={this.handleChange} /><br/>
                 <button type="submit" class="ui secondary button" value="Submit">Login</button>
+
             </form>
         )
     }

@@ -24,16 +24,19 @@ class NavBar extends Component {
 
         return(
             <Menu secondary>
-            <Menu.Item  href={routes.HOME} to={routes.HOME} activeClassName='active'>HOME</Menu.Item>
-            <Menu.Item href={routes.USERS} to={routes.USERS} activeClassName='active'>USERS</Menu.Item>
-            <Menu.Item href={routes.PROFILE} activeClassName='active'>PROFILE</Menu.Item> 
+            <Menu.Item href={routes.HOME} to={routes.HOME} >HOME</Menu.Item>
+            <Menu.Item href={routes.USERS} to={routes.USERS} >USERS</Menu.Item>
+            {
+                this.props.currentUser && <Menu.Item href={`${routes.PROFILE}/${this.props.currentUser._id}`} >PROFILE</Menu.Item>
+            }
             <Menu.Item>
                 <form onSubmit={this.handleSubmit}>
                     <Input icon="search" placeholder="Search..." name='searchInput' value={this.state.searchInput} onChange={this.handleInput}/>
                 </form>
             </Menu.Item>
              
-            <Menu.Item position="right" href={routes.LOGIN} exact activeClassName='active'>Login</Menu.Item>
+            <Menu.Item position="right" href={routes.LOGIN}  >Login</Menu.Item>
+            <Menu.Item href={routes.REGISTER} >Register</Menu.Item>
             
           </Menu>
         )

@@ -13,12 +13,13 @@ class MainContainer extends Component {
                     <div>
                     {
                         this.props.movies.map(movie => 
-                            <div class="row">
-                             <div class="column">                           
+                            
+                            
+                             <div class="column">        
                                 <Link to={`/movies/${movie.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                                 </Link>
                                 </div>
-                              </div>                           
+                                                                                    
                         )
                     }
                     </div>
