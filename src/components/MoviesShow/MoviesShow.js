@@ -4,7 +4,7 @@ import "./MovieShow.css"
 import { Container } from "semantic-ui-react"
 import Videos from "../Videos/Videos"
 
-const API_KEY='82f5b0c8452c5b698c5b7c68d5563ddd'
+const API_KEY= process.env.REACT_APP_KEY
 
 class Movies extends Component {
     state = {

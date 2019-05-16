@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal } from "semantic-ui-react"
 
 
-const API_KEY='82f5b0c8452c5b698c5b7c68d5563ddd'
+const API_KEY= process.env.REACT_APP_KEY
 
 
 class Videos extends Component {

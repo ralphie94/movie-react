@@ -3,8 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 class Profile extends Component {
     state = {
-        movies: [],
-        _id: null
+        movies: []
     }
 
     componentDidMount() {
@@ -27,12 +26,13 @@ class Profile extends Component {
     deleteMovie = async (id,e) => {
         e.preventDefault();
         try {
-            const deleteMovie = await fetch (`/users/${this.props.match.params.id}`, {
-                method: "DELETE",
-                credentials: "include"
+            const removeMovie = await fetch (`/users/${this.props.match.params.id}`, {
+                method: "DELETE"
             });
-            const deleteMovieJson = await deleteMovie.json();
-            this.setState({movies: this.state.movies.filter((movie,i) => movie._id !== id)})
+            const removeMovieJson = await removeMovie.json();
+            this.setState({
+                movies: removeMovieJson.movies
+            })
         } catch(err){
             console.log(err);
         }
@@ -49,7 +49,7 @@ class Profile extends Component {
                     <li>
                     <h1>{m.title}</h1>
                     <Link to={`/movies/${m.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${m.image}`} /></Link><br/>
-                    <button class="ui secondary button">Delete Movie</button>
+                    <button onClick={() => this.deleteMovie(m.id)} class="ui secondary button">Delete Movie</button>
                     </li>
                 </div>
                 )

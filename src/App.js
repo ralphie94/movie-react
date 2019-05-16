@@ -7,6 +7,7 @@ import Movies from './components/Movies/Movies'
 import Login from "./components/Login/Login"
 import Profile from "./components/Profile/Profile";
 import CreateUser from "./components/CreateUser/CreateUser"
+import Edit from "./components/EditUser/EditUser"
 
 import MoviesShow from './components/MoviesShow/MoviesShow'
 
@@ -80,7 +81,7 @@ class App extends Component {
         
         <Switch>
           <Route exact path={routes.HOME} render={() => <Movies movies={movies}/> } />
-          <Route exact path={routes.USERS} />
+          <Route exact path={routes.USERS} render={() => <Edit doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path={`${routes.PROFILE}/:id`} render={() => <Profile />}/>
           <Route exact path={'/movies/:id'} render={() => <MoviesShow currentUser={this.state.currentUser}/>}/>
           <Route exact path={"/login"} render={(props) => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>
