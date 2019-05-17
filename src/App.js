@@ -81,7 +81,7 @@ class App extends Component {
         
         <Switch>
           <Route exact path={routes.HOME} render={() => <Movies movies={movies}/> } />
-          <Route exact path={routes.USERS} render={() => <Edit doSetCurrentUser={this.doSetCurrentUser}/>}/>
+          <Route exact path={routes.USERS} render={() => <Edit doSetCurrentUser={this.doSetCurrentUser} currentUser={this.state.currentUser}/>}/>
           <Route exact path={`${routes.PROFILE}/:id`} render={() => <Profile />}/>
           <Route exact path={'/movies/:id'} render={() => <MoviesShow currentUser={this.state.currentUser}/>}/>
           <Route exact path={"/login"} render={(props) => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>}/>

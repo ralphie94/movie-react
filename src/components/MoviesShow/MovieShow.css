@@ -1,3 +1,6 @@
+body {
+    background-color: black
+}
 .show{
     max-width: 600px;
     max-height: 400px
@@ -5,10 +8,12 @@
 
 .overview{
     font-size: 25px;
+    color: white;
 }
 
 .date{
     font-size: 20px;
+    color: white;
 }
 
 .poster{
@@ -20,6 +25,11 @@
 .show{ 
     font-size: 40px;
     font-family: "De Valencia";
+    color: white;
+}
+
+#plot{
+    color: white;
 }
 
 

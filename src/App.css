@@ -1,3 +1,6 @@
+body {
+  background-color: black;
+}
 .App {
   text-align: center;
 }
@@ -49,6 +52,7 @@ img {
 #login{
   font-size: 50px;
   font-family: "Limelight";
+  color: white;
 }
 
 #main{

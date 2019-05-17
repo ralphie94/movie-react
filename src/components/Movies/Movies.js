@@ -2,6 +2,8 @@ import React from 'react'
 
 import MainContainer from "../MainContainer/MainContainer";
 
+import "./Movies.css"
+
 
 const Movies = ({movies}) =>
     <div>

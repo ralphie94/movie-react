@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom'
+import "./Profile.css"
 
 class Profile extends Component {
     state = {
@@ -23,15 +24,17 @@ class Profile extends Component {
         }
     }
 
-    deleteMovie = async (id,e) => {
+    deleteMovie = async (e, id) => {
         e.preventDefault();
+        // console.log(`/users/${this.props.match.params.id}/movies/${id}`)
         try {
-            const removeMovie = await fetch (`/users/${this.props.match.params.id}`, {
+            const removeMovie = await fetch (`/users/${this.props.match.params.id}/movies/${id}`, {
                 method: "DELETE"
             });
             const removeMovieJson = await removeMovie.json();
+            console.log(removeMovieJson)
             this.setState({
-                movies: removeMovieJson.movies
+                movies: removeMovieJson.data.movies
             })
         } catch(err){
             console.log(err);
@@ -42,14 +45,14 @@ class Profile extends Component {
         console.log(this.state)
         return (
             <div>
-            <h1>Watch List</h1>
+            <h1 id="main">Watch List</h1>
             {
                 this.state.movies.map((m,i) =>
                 <div>
                     <li>
-                    <h1>{m.title}</h1>
+                    <h1 id="title">{m.title}</h1>
                     <Link to={`/movies/${m.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${m.image}`} /></Link><br/>
-                    <button onClick={() => this.deleteMovie(m.id)} class="ui secondary button">Delete Movie</button>
+                    <button onClick={(e) => this.deleteMovie(e, m.id)} class="ui secondary button">Delete Movie</button>
                     </li>
                 </div>
                 )
