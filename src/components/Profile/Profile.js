@@ -48,9 +48,8 @@ class Profile extends Component {
             <h1 id="main">Watch List</h1>
             {
                 this.state.movies.map((m,i) =>
-                <div>
+                <div class="column">
                     <li>
-                    <h1 id="title">{m.title}</h1>
                     <Link to={`/movies/${m.id}`}><img class="main" src={`https://image.tmdb.org/t/p/original/${m.image}`} /></Link><br/>
                     <button onClick={(e) => this.deleteMovie(e, m.id)} class="ui secondary button">Delete Movie</button>
                     </li>
