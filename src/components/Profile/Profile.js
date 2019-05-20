@@ -4,7 +4,7 @@ import "./Profile.css"
 
 class Profile extends Component {
     state = {
-        movies: []
+        movies: [],
     }
 
     componentDidMount() {
@@ -26,7 +26,6 @@ class Profile extends Component {
 
     deleteMovie = async (e, id) => {
         e.preventDefault();
-        // console.log(`/users/${this.props.match.params.id}/movies/${id}`)
         try {
             const removeMovie = await fetch (`/users/${this.props.match.params.id}/movies/${id}`, {
                 method: "DELETE"

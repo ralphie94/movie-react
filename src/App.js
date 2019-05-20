@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
 import * as routes from "./constants/routes";
 import NavBar from './components/NavBar/NavBar';
@@ -41,7 +41,8 @@ class App extends Component {
     try{
       await this.setState({searchResult: val})
       const res = await this.getMovies();
-      return this.setState({movies: res.results})
+      this.setState({movies: res.results});
+      return this.props.history.push('/')
     }catch(err){
       return err
     }
@@ -94,4 +95,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

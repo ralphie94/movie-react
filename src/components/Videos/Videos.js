@@ -38,7 +38,7 @@ class Videos extends Component {
             <div>
                 <Modal trigger={<Button>Play Trailer</Button>} basic size="large">
                 <iframe id="background-video" width="1000" height="700" frameborder="0" allowFullScreen
-                    src={`https://www.youtube.com/embed/${this.state.video.key}?autoplay=1&mute=1`}>
+                    src={`https://www.youtube.com/embed/${this.state.video.key}?autoplay=1`}>
                 </iframe>
                 </Modal>
             </div>

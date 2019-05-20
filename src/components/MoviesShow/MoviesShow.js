@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import "./MovieShow.css"
 import { Container } from "semantic-ui-react"
 import Videos from "../Videos/Videos"
+import Credits from "../Credits/Credits"
 
 const API_KEY= process.env.REACT_APP_KEY
 
@@ -10,7 +11,7 @@ class Movies extends Component {
     state = {
         movie: {},
         video: {},
-        credit: []
+        credits: {}
     }
 
     componentDidMount() {
@@ -18,7 +19,7 @@ class Movies extends Component {
             .then(data => this.setState({
                 movie: data.movieJson,
                 video: data.videosJson.results[0],
-                credit: data.creditsJson
+                credits: data.creditsJson.cast
             }))
     }
 
@@ -75,7 +76,7 @@ class Movies extends Component {
                 <span class="overview">{this.state.movie.overview}</span><br/>
                 <button class="ui secondary button" value="Submit" onClick={()=>{this.addMovie(this.state.movie)}}>Add Movie</button><br/>
                 <Videos video={this.props.match.params.id}/>
-
+                <Credits credits={this.props.match.params.id}/>
                 </Container>
             </div>
         )
