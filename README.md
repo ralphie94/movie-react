@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cinefile
 
-## Available Scripts
+Cinefile is an IMDb inspired movie app where you can create an account, discover movies, watch movie trailers, check out the cast of the movies, and add a movie to your waatch list to keep track of movies you want to watch
 
-In the project directory, you can run:
+# Wireframes
 
-### `npm start`
+<img width="1435" alt="Screen Shot 2019-06-18 at 8 21 54 AM" src="https://user-images.githubusercontent.com/46550126/59697666-20f2f180-91a3-11e9-8c01-f58534d2ad2c.png">
+<img width="1440" alt="Screen Shot 2019-06-18 at 8 22 32 AM" src="https://user-images.githubusercontent.com/46550126/59697737-3e27c000-91a3-11e9-9c23-5745ef8b660c.png">
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# User Story
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* User can create an account or login.
+* Once a user is logged in, they can add movies to their watch list.
+* From their watch list, users can add the movie to their calendar to set the day they will go see that movie.
+* Users can search for any movie and see information about that movie.
 
-### `npm test`
+# Technologies Used
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* React
+* MongoDB
+* Express
+* Node.js
+* Semantic UI
+* CSS3
+* The Movie Database API
 
-### `npm run build`
+# Future Improvements
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Finish the calendar function so a user can also pick the time they want to see the movie.
+2. Feature where users can follow other users so they can see each others watch list.
+3. Functionality that allows users to review movies and the reviews in their profile.
