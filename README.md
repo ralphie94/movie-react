@@ -1,6 +1,6 @@
 # Cinefile
 
-Cinefile is an IMDb inspired movie app where you can create an account, discover movies, watch movie trailers, check out the cast of the movies, and add a movie to your waatch list to keep track of movies you want to watch
+Cinefile is an IMDb inspired movie app where you can create an account, discover movies, watch movie trailers, check out the cast of the movies, and add a movie to your watch list to keep track of movies you want to watch.
 
 # Wireframes
 
